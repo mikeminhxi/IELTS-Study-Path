@@ -84,7 +84,7 @@ export function Layout() {
 
 function Badge({ n }: { n: number }) {
   return (
-    <span className="ml-auto inline-flex h-5 min-w-5 items-center justify-center whitespace-nowrap rounded-full bg-danger px-1.5 text-[11px] font-bold leading-none text-white" aria-label={`${n} thẻ đến hạn`}>
+    <span className="ml-auto inline-flex h-5 min-w-5 items-center justify-center whitespace-nowrap rounded-full bg-danger px-1.5 text-[11px] font-bold leading-none text-card" aria-label={`${n} thẻ đến hạn`}>
       {n > 99 ? '99+' : n}
     </span>
   )

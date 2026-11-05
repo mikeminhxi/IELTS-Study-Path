@@ -53,3 +53,12 @@ describe('state', () => {
     expect(streak({}, t)).toBe(0)
   })
 })
+
+describe('settings import', () => {
+  it('defaults palette for old exports', async () => {
+    const { parseImported } = await import('../src/lib/state')
+    const s = parseImported({ version: 1, lessons: {}, cards: {}, settings: { theme: 'dark' } })
+    expect(s?.settings.palette).toBe('indigo')
+    expect(s?.settings.theme).toBe('dark')
+  })
+})

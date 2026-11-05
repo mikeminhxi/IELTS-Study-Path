@@ -43,17 +43,22 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   // Giao diện sáng/tối.
   const theme = state.settings.theme
+  const palette = state.settings.palette
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
     const apply = () => {
       const dark = theme === 'dark' || (theme === 'system' && mq.matches)
-      document.documentElement.dataset.theme = dark ? 'dark' : 'light'
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#0E0F22' : '#4F46E5')
+      const root = document.documentElement
+      root.dataset.theme = dark ? 'dark' : 'light'
+      root.dataset.palette = palette
+      const css = getComputedStyle(root)
+      const color = css.getPropertyValue(dark ? '--bg' : '--primary').trim()
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', color)
     }
     apply()
     mq.addEventListener('change', apply)
     return () => mq.removeEventListener('change', apply)
-  }, [theme])
+  }, [theme, palette])
 
   if (!ready) return null
   return <Ctx.Provider value={{ state, dispatch }}>{children}</Ctx.Provider>

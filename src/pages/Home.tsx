@@ -139,7 +139,7 @@ function StageCard({ stage, onOpen }: { stage: Stage; onOpen: (id: string, s: Le
         onClick={() => setExpanded((e) => !e)}
         className="flex w-full items-start gap-4 p-5 text-left transition-colors hover:bg-muted/60"
       >
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-lg font-bold text-white" style={{ background: color }} aria-hidden>
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-lg font-bold" style={{ background: color, color: 'var(--stage-on)' }} aria-hidden>
           {stage.id}
         </span>
         <span className="min-w-0 flex-1">

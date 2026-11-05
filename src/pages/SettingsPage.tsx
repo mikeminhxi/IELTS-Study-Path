@@ -87,8 +87,9 @@ export default function SettingsPage() {
       </Section>
 
       <Section title="Giao diện">
+        <PalettePicker value={s.palette} onChange={(v) => set({ palette: v })} />
         <Segmented
-          label="Chế độ màu"
+          label="Sáng / tối"
           value={s.theme}
           options={[
             { v: 'system', l: 'Theo máy' },
@@ -181,6 +182,42 @@ function Segmented({ label, value, options, onChange }: { label: string; value: 
             {o.l}
           </label>
         ))}
+      </div>
+    </fieldset>
+  )
+}
+
+const PALETTES: { v: Settings['palette']; l: string; desc: string; colors: string[] }[] = [
+  { v: 'indigo', l: 'Tím', desc: 'Mặc định, tập trung', colors: ['#4f46e5', '#eef2ff', '#818cf8'] },
+  { v: 'pink', l: 'Hồng', desc: 'Nhẹ nhàng, tươi tắn', colors: ['#be185d', '#fdf2f8', '#f472b6'] },
+  { v: 'sepia', l: 'Sepia', desc: 'Giấy cũ, dịu mắt', colors: ['#8a4b14', '#f4ecd8', '#e0a458'] },
+]
+
+function PalettePicker({ value, onChange }: { value: Settings['palette']; onChange: (v: Settings['palette']) => void }) {
+  return (
+    <fieldset>
+      <legend className="mb-2 font-medium">Bộ màu</legend>
+      <div className="grid grid-cols-3 gap-2">
+        {PALETTES.map((p) => {
+          const active = value === p.v
+          return (
+            <label
+              key={p.v}
+              className={`flex cursor-pointer flex-col items-center gap-2 rounded-2xl border-2 p-3 text-center transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-primary ${
+                active ? 'border-primary bg-muted' : 'border-border hover:bg-muted'
+              }`}
+            >
+              <input type="radio" name="palette" value={p.v} checked={active} onChange={() => onChange(p.v)} className="sr-only" />
+              <span aria-hidden className="flex -space-x-1.5">
+                {p.colors.map((c) => (
+                  <span key={c} className="h-6 w-6 rounded-full border-2 border-card" style={{ background: c }} />
+                ))}
+              </span>
+              <span className={`font-semibold ${active ? 'text-primary' : ''}`}>{p.l}</span>
+              <span className="text-xs leading-tight text-muted-fg">{p.desc}</span>
+            </label>
+          )
+        })}
       </div>
     </fieldset>
   )

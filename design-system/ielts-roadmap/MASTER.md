@@ -20,15 +20,17 @@ Do môi trường không cho chạy script `search.py`, các lựa chọn dướ
 | `--primary` | #4F46E5 | #818CF8 |
 | `--on-primary` | #FFFFFF | #0F0F23 |
 | `--secondary` | #818CF8 | #6366F1 |
-| `--accent` / success | #16A34A | #4ADE80 |
+| `--accent` / success | #15803D | #4ADE80 |
 | `--bg` | #EEF2FF | #0E0F22 |
 | `--fg` | #1E1B4B | #E0E7FF |
 | `--card` | #FFFFFF | #1A1B36 |
 | `--muted` | #EBEEF8 | #24254A |
 | `--muted-fg` | #475569 | #B4BCE0 |
 | `--border` | #C7D2FE | #34366B |
-| `--danger` | #DC2626 | #F87171 |
+| `--danger` | #B91C1C | #F87171 |
 | `--warning` | #B45309 | #FBBF24 |
+
+Bộ màu Hồng và Sepia (Spec 002): xem `src/index.css` (`[data-palette='pink']`, `[data-palette='sepia']`), cả 6 tổ hợp đã đo đạt WCAG AA. Bộ Tím sáng: success → #15803D, danger → #B91C1C để chữ trên nền nhạt đạt 4.5:1.
 
 Màu giai đoạn: GĐ1 indigo `#4F46E5`, GĐ2 teal `#0D9488` (Online Course #43), GĐ3 orange `#EA580C`.
 Đúng/sai luôn kèm icon + chữ (không chỉ dựa vào màu).

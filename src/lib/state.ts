@@ -24,6 +24,7 @@ export interface Settings {
   accent: Accent
   rate: number
   theme: 'system' | 'light' | 'dark'
+  palette: 'indigo' | 'pink' | 'sepia'
   passThreshold: number
 }
 
@@ -41,6 +42,7 @@ export const defaultSettings: Settings = {
   accent: 'en-GB',
   rate: 1,
   theme: 'system',
+  palette: 'indigo',
   passThreshold: 70,
 }
 
